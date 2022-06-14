@@ -14,7 +14,7 @@ void showWindowWithPlot(const std::string &_title, const cv::Size _windowsize, c
     if(_datalength > 0 && _windowsize.area() > 0 && _data != NULL ) {
 
         cv::Mat _colorplot = cv::Mat::zeros(_windowsize, CV_8UC3);
-        cv::rectangle(_colorplot,cv::Rect(0,0,_colorplot.cols,_colorplot.rows),cv::Scalar(25,25,15), -1);
+        cv::rectangle(_colorplot,cv::Rect(0,0,_colorplot.cols,_colorplot.rows),cv::Scalar(20,20,20), -1);
 
         int _ticksX = 10;
         float _tickstepX = static_cast<float>(_windowsize.width)/ _ticksX ;
