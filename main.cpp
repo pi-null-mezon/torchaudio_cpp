@@ -51,13 +51,13 @@ int main(int argc, char** argv)
         std::cout << "Provide filename to read" << std::endl;
         return 1;
     }
-    auto [a, b, c, d, s] = torchaudio::sox_io::get_info_file(argv[1],"wav");
+    auto info = torchaudio::sox_io::get_info_file(argv[1],"wav");
     std::cout << "FILE META INFORMATION" << std::endl;
-    std::cout << " - sample rate:         "<< a << std::endl;
-    std::cout << " - samples per channel: " << b << std::endl;
-    std::cout << " - channels:            " << c << std::endl;
-    std::cout << " - bits per sample:     " << d << std::endl;
-    std::cout << " - encoding:            " << s << std::endl;
+    std::cout << " - sample rate:         " << std::get<0>(info) << std::endl;
+    std::cout << " - samples per channel: " << std::get<1>(info) << std::endl;
+    std::cout << " - channels:            " << std::get<2>(info) << std::endl;
+    std::cout << " - bits per sample:     " << std::get<3>(info) << std::endl;
+    std::cout << " - encoding:            " << std::get<4>(info) << std::endl;
 
     std::cout << "TORCH TENSOR AFTER FILE READING" << std::endl;
     std::tuple<torch::Tensor, int64_t> data = torchaudio::sox_io::load_audio_file(argv[1],0,-1,true,true,"wav");
